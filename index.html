@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>ECE 209 HCI Bake-off 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-title">
+        <h1>Bake-off #1 Text Entry Interface</h1>
+        <h2>Yuhao Feng, Ruixiao Bai, Oct 28, 2020 @ ECE UCLA</h2>
+    </div>
+    <textarea id="textarea"></textarea> <!--!!!!!!!!!!!!!!-->
+    
+    <div class="keyboard-keys"></div>
+
+
+    <div class="control-panel">
+        <a id="user-control-sign">User Controls --></a>
+        <div class="control-keys">
+            <button type="button" class="control-key" id="backspace">
+                <i class="material-icons">backspace</i>
+            </button>
+            <button type="button" class="control-key keys-mid" id="capslock">
+                <i class="material-icons">keyboard_capslock</i>
+            </button>
+            <button type="button" class="control-key" id="enter">
+                <i class="material-icons">subdirectory_arrow_left</i>
+            </button>
+            <button type="button" class="control-key" id="left">
+                <i class="material-icons">chevron_left</i>
+            </button>
+            <button type="button" class="control-key keys-mid" id="space">
+                <i class="material-icons">space_bar</i>
+            </button>
+            <button type="button" class="control-key" id="right">
+                <i class="material-icons">chevron_right</i>
+            </button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="bake-off 1.js"></script>
+</body>

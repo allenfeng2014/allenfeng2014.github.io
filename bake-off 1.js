@@ -58,14 +58,11 @@ keyboard.toggleColumns(keyboard.defaultColumns);
 const textareaDOM = $("#textarea");
 
 function controlFunction(buttonID) {
-    let cursorPosition = textareaDOM.prop('selectionStart');
-    let textArray = textareaDOM.val().split('');
     //textArray.splice(cursorPosition, 0, event.key.toUpperCase());
     //textareaDOM.val(textArray.join(''));
     switch(buttonID) {
         case 'backspace':
-            textArray.splice(cursorPosition-1, 1, '');
-            textareaDOM.val(textArray.join(''));
+            textareaDOM.val(textareaDOM.val().slice(0, -1));
             break;
         case 'capslock':
             $("#capslock").toggleClass("capslock-active");
@@ -74,8 +71,7 @@ function controlFunction(buttonID) {
             textareaDOM.val(textareaDOM.val() + 'enter clicked');
             break;
         case 'space':
-            textArray.splice(cursorPosition, 0, ' ');
-            textareaDOM.val(textArray.join(''));
+            textareaDOM.val(textareaDOM.val() + ' ');
             break;
         case 'left':
             keyboard.highlightToLeft();

@@ -91,7 +91,6 @@ function controlFunction(buttonID) {
 $('button').on('click', function(event) {
     let buttonID = event.target.parentElement.id;
     controlFunction(buttonID);
-    textareaDOM.focus();
 })
 
 textareaDOM.on('keypress', function(event) {

@@ -62,6 +62,7 @@ const keyboard = {
         }
         this.toggleColumns('keyboardLayer', this.defaultColumns);
         this.columnsHighlighted = this.defaultColumns;
+        $("#space").removeClass("spaceEntered");
     },
     createFilters: function() {
         $(`<div class="filterLayer1"></div>`).insertAfter(".keyboardLayer");
@@ -242,6 +243,7 @@ const controlPanel = {
         },
         space: function() {
             textareaDOM.val(textareaDOM.val() + ' ');
+            $("#space").addClass("spaceEntered");
         }
     },
 
@@ -252,6 +254,7 @@ const controlPanel = {
                 if (this.currentLayer === 'keyboardLayer') {
                     // if press backspace at keyboardLayer, simply do backspace
                     this.textControl.backspace();
+                    $("#space").removeClass("spaceEntered");
                 }
                 else {
                     // else press backspace at filter layers, do layerControl

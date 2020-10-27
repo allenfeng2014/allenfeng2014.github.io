@@ -50,6 +50,9 @@ Oct 24, 2020 @ ECE UCLA
 .capslock-active{
     background-color: rgb(0, 67, 190);
 }
+.spaceEntered{
+    background-color: rgb(0, 67, 190);
+}
 
 .keyboardLayer{
     display: block;

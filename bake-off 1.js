@@ -240,6 +240,7 @@ const controlPanel = {
             text = capslockClasses.includes('capslock-active') ?
                     text : text.toLowerCase();
             textareaDOM.val(textareaDOM.val() + text);
+            $("#capslock").removeClass("capslock-active");
         },
         space: function() {
             textareaDOM.val(textareaDOM.val() + ' ');

@@ -3,6 +3,10 @@ Yuhao Feng, Ruixiao Bai
 Oct 24, 2020 @ ECE UCLA
 © 2020 YF & RB. All rights reserved.*/
 
+*{
+    user-select: none;
+}
+
 .page-title h1{
     font-size: 1.2em;
     text-align: center;

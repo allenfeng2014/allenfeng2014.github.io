@@ -243,7 +243,7 @@ const controlPanel = {
         },
         space: function() {
             textareaDOM.val(textareaDOM.val() + ' ');
-            $("#space").addClass("spaceEntered");
+            $("#space").toggleClass("spaceEntered");
         }
     },
 
@@ -274,9 +274,18 @@ const controlPanel = {
                 break;
             case 'space':
                 // if press space at keyboardLayer, enter space
+                // if press space twice at keyboardLayer, copy the last character
                 // if press space at other layers, do nothing
                 if (this.currentLayer === 'keyboardLayer') {
-                    this.textControl.space();
+                    if ($("#space").attr("class").split(' ').includes("spaceEntered")) {
+                        this.textControl.backspace();
+                        let text = textareaDOM.val();
+                        textareaDOM.val(text + text[text.length-1]);
+                        $("#space").removeClass("spaceEntered");
+                    }
+                    else {
+                        this.textControl.space();
+                    }
                 }
                 break;
             case 'left':

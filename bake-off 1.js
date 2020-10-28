@@ -302,3 +302,6 @@ keyboard.initialize();
 $('button').on('click', (e) => {
     controlPanel.eventHandler(e);
 });
+$('body').on('dblclick', (e) => {
+    e.preventDefault();
+});

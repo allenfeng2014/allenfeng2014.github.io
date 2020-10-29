@@ -3,7 +3,10 @@ Yuhao Feng, Ruixiao Bai
 Oct 24, 2020 @ ECE UCLA
 © 2020 YF & RB. All rights reserved.*/
 
+// this document creates text entry interface with added functionalities
+
 const keyboard = {
+    // arrays for keyboard layout manipulation
     keyboardLayout: ['Q','W','E','R','T','Y','U','I','O','nl',
                      'A','S','D','F','G','H','J','K','P','nl',
                      'Z','X','C','V','B','N','M','L'],
@@ -21,6 +24,7 @@ const keyboard = {
     defaultColumns: ['2', '6'],
     columnsHighlighted: [],
 
+    // initialization of keyboard layout
     initialize: function() {
         this.createKeyboard();
         this.toggleColumns('keyboardLayer', this.defaultColumns);
@@ -35,6 +39,7 @@ const keyboard = {
             $(".keyboardLayer").append(keyHtml);
         });
     },
+    // toggle column's highlight status
     toggleColumns: function(layer, columns) {
         let keyColumns = [];
         switch(layer) {
@@ -54,6 +59,7 @@ const keyboard = {
             });
         };
     },
+    // reset highlight to defualt locations in the middle
     resetColumns: function() {
         for (column of this.columnsHighlighted) {
             this.keyboardColumns[column].forEach(function(key) {
@@ -69,11 +75,13 @@ const keyboard = {
         $(`<div class="filterLayer2"></div>`).insertAfter(".keyboardLayer");
     },
 
+    // arrays for highlight manipulation in filter layers
     filter1Columns: {'0': [], '1': []},
     filter1Highlighted: [],
     filter2Columns: {'0': [], '1': [], '2': []},
     filter2Highlighted: [],
 
+    // set filter layer based on highlights on last layer
     setFilter: function(filterNum) {
         let targetDOM = filterNum === 1 ?
             $(".keyboardLayer") : $(".filterLayer1");
@@ -116,9 +124,11 @@ const keyboard = {
         }
         this.toggleColumns(`filterLayer${filterNum}`, columnsToggle);
     },
+    // clear target filter layer
     clearFilter: function(filterNum) {
         $(`.filterLayer${filterNum}`).empty();
     },
+    // show target filter layer
     toggleFilter: function(filterNum) {
         $(`.filterLayer${filterNum}`).toggleClass("filterDisplayed")
     }
@@ -127,7 +137,9 @@ const keyboard = {
 const textareaDOM = $("#textarea");
 
 const controlPanel = {
+    // functionalities of the control panel
     currentLayer: 'keyboardLayer',
+    // switch between layers
     layerControl: function(action) {
         // actions that lead to layer transition
         switch(this.currentLayer) {
@@ -169,7 +181,9 @@ const controlPanel = {
                 break;
         }
     },
+    // move highlights based on button pressed
     highlightControl: {
+        // move highlights based on current layer and user action
         keyboardLayer: {
             moveLeft: function() {
                 let currentColumns = keyboard.columnsHighlighted;
@@ -229,7 +243,7 @@ const controlPanel = {
             }
         }
     },
-
+    // textarea functions based on user action
     textControl: {
         backspace: function() {
             textareaDOM.val(textareaDOM.val().slice(0, -1));
@@ -247,7 +261,7 @@ const controlPanel = {
             $("#space").toggleClass("spaceEntered");
         }
     },
-
+    // event handler which decides next actions after a button is pressed
     eventHandler: function(event) {
         let buttonID = event.target.parentElement.id;
         switch(buttonID) {
@@ -298,10 +312,13 @@ const controlPanel = {
         }
     }
 };
+
+// initialize interface, and deal with event 'click'
 keyboard.initialize();
 $('button').on('click', (e) => {
     controlPanel.eventHandler(e);
 });
+// disable double click event defaults to prevent zoom-in
 $(document).on('dblclick', (e) => {
     e.preventDefault();
 });
